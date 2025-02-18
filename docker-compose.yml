@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  mariadb:
+    image: mariadb:10.5.9
+    container_name: mariadb-pynovel
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: pynovel
+      MYSQL_USER: pynovel
+      MYSQL_PASSWORD: pynovel
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+    - 33064:3306
+
+  dbeaver:
+    image: dbeaver/cloudbeaver:latest
+    container_name: dbeaver-cloudbeaver
+    environment:
+      CB_ADMIN_NAME: admin           # Set admin username
+      CB_ADMIN_PASSWORD: admin123    # Set admin password
+    ports:
+      - 33054:8978                    # Map port 8080 to access CloudBeaver
+    depends_on:
+      - mariadb       
+                     # Ensure MariaDB starts first
+  splash:
+    image: scrapinghub/splash
+    ports:
+      - "8050:8050"
+      
+volumes:
+  db_data:

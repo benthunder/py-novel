@@ -1,0 +1,10 @@
+body {
+    font-family: sans-serif;
+    /* Sử dụng font sans-serif */
+    text-align: justify;
+    /* Căn đều hai bên */
+    line-height: 1.5;
+    /* Tăng khoảng cách giữa các dòng */
+    margin: 10px;
+    /* Khoảng cách lề */
+}
