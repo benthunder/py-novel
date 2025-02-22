@@ -8,7 +8,7 @@ class NovelbinSpider(scrapy.Spider):
     name = "novelbin"
     allowed_domains = ["novelbin.com"]
     start_urls = []
-    slug = "absolute-sword-sense"
+    slug = "nano-machine-retranslated-version"
     title = "Tuyệt đối kiếm cảm"
     novel_data = {}
 
@@ -17,7 +17,7 @@ class NovelbinSpider(scrapy.Spider):
         "Accept-Language": "en-US,en;q=0.9",
         "Cache-Control": "no-cache",
         "Pragma": "no-cache",
-        "Referer": "https://novelbin.com/ajax/chapter-archive?novelId=absolute-sword-sense",
+        "Referer": "https://novelbin.com/ajax/chapter-archive?novelId=nano-machine-retranslated-version",
         "Sec-Fetch-Dest": "document",
         "Sec-Fetch-Mode": "navigate",
         "Sec-Fetch-Site": "same-origin",
@@ -29,7 +29,7 @@ class NovelbinSpider(scrapy.Spider):
     cookies = {
         "_ga": "GA1.1.1029526527.1739389877",
         "_sharedID": "bc09a410-2dc0-45bb-be3e-2214b08d2a7a",
-        "cf_clearance": "QcSglathG1NsvUhK247iaSP9oTAFKQeeNbQH2ByXE1Y-1740017713-1.2.1.1-ePQuAxjfe5kWL0yC_oxJtFgdA7q3qj6fL7V5B_BK8C4LBOsRpktmWnhsY2v5r51k4iAbgAshzu8bXepM_QzlRxXf00vNaDOocqI6nulcSqk4DK3Cd6CqLjN6nUiIWPtA4FM_21gpuLiZr38iP8oaRONWSDbkR7DWCJ77ttfzyddXveKwoVS5Yt6Kyvj6zGfXuElsXvUIsElrV.M.ZcTZleZnnbfXOldmNsGZ3qeh7IGv7H1b_kTpIeCUqjp2sFEMTmtSYM_LP7T_tVmHgLAQ9E2sUSoEHzQI5CW9k1UtY.h380Nxj.LMLEH61BDaIuOvhqJi4HrRzYx4.IML21tGJw",
+        "cf_clearance": "KTDoOq8GZgEd7sh.dXuTKImwidNwnEXSzFdab.UNFhs-1740050734-1.2.1.1-.MK15AQQF6JMBTrl0hhd43hNhOa0..uXFbMuhhnY.qX39kwCrQkKWSZM7CmSc4WCKAhBsWPWAnTLHDzW5OCPt4kw3ggey3.ptTIdLpL6B0tY566OllJUkdiDQJFZVtepTDdCjuBCe25Dw1Ils2qV4gPxn1VM_LCVzEl2__Zi3FLq15wY7j6FVZ0GZ6QBi8kFYwByyOZxSGX6pglliNZi336S4o4pjcEg5kZ0MNC7DeQwVgetMIi6UqJGfQeL8588vuaPMP00lXGt7oKLI0GsrBO67XG1g_O4Jzz.N43sP5tIG5FgdFM3IM9QMDgueQB6LbrdrVnD7KhIfXcgQJR5hA; _csrf=dVkg2axwnAHCGT4aHkcjJza9; connect.sid=s%3AT5HcEsD5mqe2018K0RWAkLibcHYRCMve.",
     }
 
     custom_settings = {
@@ -52,6 +52,7 @@ class NovelbinSpider(scrapy.Spider):
     def parse(self, response):
         content = response.css("#chr-content").get()
         title = response.css(".chr-title >span::text").get().strip()
+        print(title)
         yield {
             "title": title,
             "content": content,
